@@ -43,6 +43,7 @@ export interface QueryOptions {
   sort?: string;
   order?: "asc" | "desc";
   search?: string;
+  filter?: Record<string, any>;
 }
 
 export interface Address {
@@ -62,4 +63,9 @@ export interface Preferences {
   language: "ar" | "fr" | "en";
   notifications: boolean;
   newsletter: boolean;
+}
+
+export interface Location {
+  type: "Point";
+  coordinates: [number, number]; // [longitude, latitude]
 }

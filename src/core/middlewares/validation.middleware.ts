@@ -24,7 +24,13 @@ export const validate = (validations: ValidationChain[]) => {
         return acc;
       }, {} as Record<string, string>);
 
-      throw new BadRequestError("Validation failed", formattedErrors as any);
+      next(
+        new BadRequestError(
+          "Validation failed",
+          JSON.stringify(formattedErrors)
+        )
+      );
+      return;
     }
 
     next();

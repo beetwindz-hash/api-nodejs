@@ -59,6 +59,15 @@ export class AddressEntity {
     this.props.updatedAt = new Date();
   }
 
+  update(
+    data: Partial<
+      Omit<AddressProps, "id" | "userId" | "createdAt" | "updatedAt">
+    >
+  ): void {
+    Object.assign(this.props, data);
+    this.props.updatedAt = new Date();
+  }
+
   toJSON() {
     return { ...this.props };
   }

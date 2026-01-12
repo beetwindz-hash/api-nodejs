@@ -11,14 +11,19 @@ export interface AppConfig {
   rateLimitWindowMs: number;
   rateLimitMaxRequests: number;
   logLevel: string;
+  cloudinary: {
+    cloudName: string;
+    apiKey: string;
+    apiSecret: string;
+  };
 }
 
 const getEnvVar = (key: string, defaultValue?: string): string => {
   const value = process.env[key] || defaultValue;
-  if (!value) {
+  if (!value && !defaultValue) {
     throw new Error(`Missing required environment variable: ${key}`);
   }
-  return value;
+  return value!;
 };
 
 const getEnvNumber = (key: string, defaultValue: number): number => {
@@ -36,4 +41,9 @@ export const appConfig: AppConfig = {
   rateLimitWindowMs: getEnvNumber("RATE_LIMIT_WINDOW_MS", 900000),
   rateLimitMaxRequests: getEnvNumber("RATE_LIMIT_MAX_REQUESTS", 100),
   logLevel: getEnvVar("LOG_LEVEL", "info"),
+  cloudinary: {
+    cloudName: getEnvVar("CLOUDINARY_CLOUD_NAME", ""),
+    apiKey: getEnvVar("CLOUDINARY_API_KEY", ""),
+    apiSecret: getEnvVar("CLOUDINARY_API_SECRET", ""),
+  },
 };

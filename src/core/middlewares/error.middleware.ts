@@ -7,7 +7,6 @@ import {
   ValidationError as DomainValidationError,
 } from "@core/errors";
 import { logger, ResponseUtil } from "@core/utils";
-import { ValidationError as ExpressValidationError } from "express-validator";
 
 export const errorHandler = (
   error: Error,
@@ -35,11 +34,20 @@ export const errorHandler = (
   }
 
   if (error.name === "MongoServerError" && (error as any).code === 11000) {
-    return ResponseUtil.error(res, "Duplicate resource", 409);
+    const field = Object.keys((error as any).keyPattern)[0];
+    return ResponseUtil.error(res, `${field} already exists`, 409);
   }
 
   if (error.name === "CastError") {
     return ResponseUtil.error(res, "Invalid ID format", 400);
+  }
+
+  if (error.name === "JsonWebTokenError") {
+    return ResponseUtil.error(res, "Invalid token", 401);
+  }
+
+  if (error.name === "TokenExpiredError") {
+    return ResponseUtil.error(res, "Token expired", 401);
   }
 
   return ResponseUtil.error(

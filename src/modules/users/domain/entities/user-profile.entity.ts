@@ -1,14 +1,12 @@
+// ============================================================================
 // src/modules/users/domain/entities/user-profile.entity.ts
+// ============================================================================
 import { Address, Preferences } from "@core/types";
 
 export interface UserProfileProps {
   id: string;
   userId: string;
-  name: string;
-  email: string;
   phone?: string;
-  avatarUrl?: string;
-  role: string;
   address?: Address;
   preferences: Preferences;
   createdAt: Date;
@@ -24,6 +22,11 @@ export class UserProfileEntity {
     return new UserProfileEntity({
       ...props,
       id: "",
+      preferences: props.preferences || {
+        language: "en",
+        notifications: true,
+        newsletter: false,
+      },
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -41,17 +44,28 @@ export class UserProfileEntity {
     return this.props.userId;
   }
 
-  updateProfile(
-    data: Partial<
-      Pick<UserProfileProps, "name" | "phone" | "address" | "preferences">
-    >
-  ): void {
-    Object.assign(this.props, data);
-    this.props.updatedAt = new Date();
+  get phone(): string | undefined {
+    return this.props.phone;
   }
 
-  updateAvatar(url: string): void {
-    this.props.avatarUrl = url;
+  get address(): Address | undefined {
+    return this.props.address;
+  }
+
+  get preferences(): Preferences {
+    return this.props.preferences;
+  }
+
+  updateProfile(
+    data: Partial<Pick<UserProfileProps, "phone" | "address" | "preferences">>
+  ): void {
+    if (data.phone !== undefined) this.props.phone = data.phone;
+    if (data.address) this.props.address = data.address;
+    if (data.preferences)
+      this.props.preferences = {
+        ...this.props.preferences,
+        ...data.preferences,
+      };
     this.props.updatedAt = new Date();
   }
 

@@ -12,7 +12,8 @@ export class ForgotPasswordUseCase {
   async execute(dto: ForgotPasswordDto): Promise<void> {
     const user = await this.userRepository.findByEmail(dto.email);
     if (!user) {
-      throw new NotFoundError("User not found");
+      // Don't reveal if email exists
+      return;
     }
 
     const resetToken = crypto.randomBytes(32).toString("hex");

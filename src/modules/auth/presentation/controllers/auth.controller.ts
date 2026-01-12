@@ -7,6 +7,7 @@ import {
   LoginUseCase,
   RegisterUseCase,
   RefreshTokenUseCase,
+  LogoutUseCase,
   ForgotPasswordUseCase,
   ResetPasswordUseCase,
   GetMeUseCase,
@@ -17,6 +18,7 @@ export class AuthController {
     private readonly loginUseCase: LoginUseCase,
     private readonly registerUseCase: RegisterUseCase,
     private readonly refreshTokenUseCase: RefreshTokenUseCase,
+    private readonly logoutUseCase: LogoutUseCase,
     private readonly forgotPasswordUseCase: ForgotPasswordUseCase,
     private readonly resetPasswordUseCase: ResetPasswordUseCase,
     private readonly getMeUseCase: GetMeUseCase
@@ -67,7 +69,7 @@ export class AuthController {
     next: NextFunction
   ): Promise<void> => {
     try {
-      // TODO: Implement token blacklisting
+      await this.logoutUseCase.execute(req.user!.userId);
       ResponseUtil.success(res, null, "Logged out successfully");
     } catch (error) {
       next(error);

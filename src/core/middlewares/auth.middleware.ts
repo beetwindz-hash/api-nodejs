@@ -1,4 +1,6 @@
+// ============================================================================
 // src/core/middlewares/auth.middleware.ts
+// ============================================================================
 import { Request, Response, NextFunction } from "express";
 import { JwtUtil } from "@core/utils";
 import { UnauthorizedError, ForbiddenError } from "@core/errors";

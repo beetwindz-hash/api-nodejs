@@ -1,4 +1,6 @@
+// ============================================================================
 // src/core/config/index.ts
+// ============================================================================
 import dotenv from "dotenv";
 import { appConfig } from "./app.config";
 import { databaseConfig } from "./database.config";

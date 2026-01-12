@@ -1,4 +1,6 @@
+// ============================================================================
 // src/modules/auth/infrastructure/models/user.model.ts
+// ============================================================================
 import mongoose, { Schema, Document } from "mongoose";
 import { Role } from "@core/types";
 
@@ -91,5 +93,6 @@ const userSchema = new Schema<IUserDocument>(
 
 userSchema.index({ email: 1 });
 userSchema.index({ role: 1 });
+userSchema.index({ isActive: 1 });
 
 export const UserModel = mongoose.model<IUserDocument>("User", userSchema);

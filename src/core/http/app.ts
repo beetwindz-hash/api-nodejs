@@ -1,4 +1,6 @@
+// ============================================================================
 // src/core/http/app.ts
+// ============================================================================
 import express, { Application, Request, Response } from "express";
 import helmet from "helmet";
 import cors from "cors";
@@ -11,6 +13,7 @@ import {
   requestLogger,
 } from "@core/middlewares";
 import { createRouter } from "./router";
+import { logger } from "@core/utils";
 
 export const createApp = (): Application => {
   const app = express();
@@ -46,7 +49,9 @@ export const createApp = (): Application => {
   app.use(compression());
 
   // Request logging
-  app.use(requestLogger);
+  if (appConfig.nodeEnv !== "test") {
+    app.use(requestLogger);
+  }
 
   // Health check
   app.get("/health", (req: Request, res: Response) => {
@@ -54,6 +59,16 @@ export const createApp = (): Application => {
       status: "ok",
       timestamp: new Date().toISOString(),
       uptime: process.uptime(),
+      environment: appConfig.nodeEnv,
+    });
+  });
+
+  // Root endpoint
+  app.get("/", (req: Request, res: Response) => {
+    res.status(200).json({
+      message: "Bennet Eddar API",
+      version: appConfig.apiVersion,
+      docs: "/api/docs",
     });
   });
 

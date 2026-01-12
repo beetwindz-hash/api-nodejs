@@ -1,4 +1,6 @@
+// ============================================================================
 // src/modules/auth/presentation/validators/auth.validators.ts
+// ============================================================================
 import { body } from "express-validator";
 
 export const loginValidator = [
@@ -18,11 +20,11 @@ export const registerValidator = [
     .isLength({ min: 8 })
     .withMessage("Password must be at least 8 characters")
     .matches(/(?=.*[a-z])/)
-    .withMessage("Password must contain lowercase letter")
+    .withMessage("Password must contain at least one lowercase letter")
     .matches(/(?=.*[A-Z])/)
-    .withMessage("Password must contain uppercase letter")
+    .withMessage("Password must contain at least one uppercase letter")
     .matches(/(?=.*\d)/)
-    .withMessage("Password must contain number"),
+    .withMessage("Password must contain at least one number"),
   body("name")
     .trim()
     .isLength({ min: 2 })
@@ -49,11 +51,11 @@ export const resetPasswordValidator = [
     .isLength({ min: 8 })
     .withMessage("Password must be at least 8 characters")
     .matches(/(?=.*[a-z])/)
-    .withMessage("Password must contain lowercase letter")
+    .withMessage("Password must contain at least one lowercase letter")
     .matches(/(?=.*[A-Z])/)
-    .withMessage("Password must contain uppercase letter")
+    .withMessage("Password must contain at least one uppercase letter")
     .matches(/(?=.*\d)/)
-    .withMessage("Password must contain number"),
+    .withMessage("Password must contain at least one number"),
   body("confirmPassword")
     .custom((value, { req }) => value === req.body.password)
     .withMessage("Passwords must match"),

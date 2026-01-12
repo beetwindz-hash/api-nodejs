@@ -1,4 +1,6 @@
+// ============================================================================
 // src/modules/auth/application/dto/auth.dto.ts
+// ============================================================================
 import { Role } from "@core/types";
 
 export interface LoginDto {

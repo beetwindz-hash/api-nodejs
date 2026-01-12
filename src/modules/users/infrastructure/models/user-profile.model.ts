@@ -1,7 +1,6 @@
 // ============================================================================
-// INFRASTRUCTURE - Models
-// ============================================================================
 // src/modules/users/infrastructure/models/user-profile.model.ts
+// ============================================================================
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IUserProfileDocument extends Document {
@@ -14,6 +13,10 @@ export interface IUserProfileDocument extends Document {
     postalCode?: string;
     country: string;
     isDefault: boolean;
+    phone?: string;
+    instructions?: string;
+    latitude?: number;
+    longitude?: number;
   };
   preferences: {
     language: "ar" | "fr" | "en";
@@ -41,6 +44,10 @@ const userProfileSchema = new Schema<IUserProfileDocument>(
       postalCode: String,
       country: String,
       isDefault: Boolean,
+      phone: String,
+      instructions: String,
+      latitude: Number,
+      longitude: Number,
     },
     preferences: {
       language: {

@@ -1,7 +1,6 @@
 // ============================================================================
 // src/core/utils/jwt.util.ts
 // ============================================================================
-
 import jwt from "jsonwebtoken";
 import { jwtConfig } from "@core/config";
 import { UnauthorizedError } from "@core/errors";
@@ -34,6 +33,7 @@ export class JwtUtil {
       }
       return decoded;
     } catch (error) {
+      if (error instanceof UnauthorizedError) throw error;
       throw new UnauthorizedError("Invalid or expired token");
     }
   }
@@ -46,6 +46,7 @@ export class JwtUtil {
       }
       return decoded;
     } catch (error) {
+      if (error instanceof UnauthorizedError) throw error;
       throw new UnauthorizedError("Invalid or expired refresh token");
     }
   }

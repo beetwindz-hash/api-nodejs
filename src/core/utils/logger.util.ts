@@ -30,12 +30,19 @@ export const logger = winston.createLogger({
     new winston.transports.Console({
       format: consoleFormat,
     }),
+  ],
+});
+
+if (appConfig.nodeEnv !== "test") {
+  logger.add(
     new winston.transports.File({
       filename: "logs/error.log",
       level: "error",
-    }),
+    })
+  );
+  logger.add(
     new winston.transports.File({
       filename: "logs/combined.log",
-    }),
-  ],
-});
+    })
+  );
+}

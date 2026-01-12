@@ -16,7 +16,7 @@ export class UserRepositoryImpl implements IUserRepository {
   }
 
   async findByEmail(email: string): Promise<UserEntity | null> {
-    const user = await UserModel.findOne({ email }).select(
+    const user = await UserModel.findOne({ email: email.toLowerCase() }).select(
       "+password +refreshToken +passwordResetToken +passwordResetExpires"
     );
 
@@ -81,7 +81,9 @@ export class UserRepositoryImpl implements IUserRepository {
   }
 
   async exists(email: string): Promise<boolean> {
-    const count = await UserModel.countDocuments({ email });
+    const count = await UserModel.countDocuments({
+      email: email.toLowerCase(),
+    });
     return count > 0;
   }
 }

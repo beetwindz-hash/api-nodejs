@@ -1,4 +1,6 @@
+// ============================================================================
 // src/modules/auth/domain/entities/user.entity.ts
+// ============================================================================
 import { Role } from "@core/types";
 
 export interface UserProps {
@@ -26,7 +28,7 @@ export class UserEntity {
   ): UserEntity {
     return new UserEntity({
       ...props,
-      id: "", // Will be set by repository
+      id: "",
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -97,6 +99,11 @@ export class UserEntity {
     this.props.updatedAt = new Date();
   }
 
+  clearRefreshToken(): void {
+    this.props.refreshToken = undefined;
+    this.props.updatedAt = new Date();
+  }
+
   setPasswordResetToken(token: string, expires: Date): void {
     this.props.passwordResetToken = token;
     this.props.passwordResetExpires = expires;
@@ -111,6 +118,11 @@ export class UserEntity {
 
   updatePassword(hashedPassword: string): void {
     this.props.password = hashedPassword;
+    this.props.updatedAt = new Date();
+  }
+
+  updateAvatar(url: string): void {
+    this.props.avatarUrl = url;
     this.props.updatedAt = new Date();
   }
 

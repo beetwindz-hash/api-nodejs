@@ -23,9 +23,10 @@ export class AppServer {
 
       // Start HTTP server
       this.server = this.app.listen(appConfig.port, () => {
-        logger.info(`Server started on port ${appConfig.port}`);
-        logger.info(`Environment: ${appConfig.nodeEnv}`);
-        logger.info(`API Version: ${appConfig.apiVersion}`);
+        logger.info(`🚀 Server started on port ${appConfig.port}`);
+        logger.info(`📝 Environment: ${appConfig.nodeEnv}`);
+        logger.info(`🔗 API Version: ${appConfig.apiVersion}`);
+        logger.info(`🌐 CORS Origin: ${appConfig.corsOrigin}`);
       });
 
       this.setupGracefulShutdown();
