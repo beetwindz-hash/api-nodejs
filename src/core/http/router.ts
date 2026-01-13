@@ -6,6 +6,7 @@ import { authRouter } from "@modules/auth/presentation/routes/auth.routes";
 import { usersRouter } from "@modules/users/presentation/routes/users.routes";
 import { cooksRouter } from "@modules/cooks/presentation/routes/cooks.routes";
 import { dishesRouter } from "@modules/dishes/presentation/routes/dishes.routes";
+import { ordersRouter } from "@modules/orders/presentation/routes/orders.routes";
 
 export const createRouter = (): Router => {
   const router = Router();
@@ -33,12 +34,11 @@ export const createRouter = (): Router => {
   // Mount module routes
   router.use("/auth", authRouter);
   router.use("/users", usersRouter);
-
   router.use("/cooks", cooksRouter);
   router.use("/dishes", dishesRouter);
+  router.use("/orders", ordersRouter);
 
   // TODO: Uncomment as modules are implemented
-  // router.use('/orders', ordersRouter);
   // router.use('/applications', applicationsRouter);
   // router.use('/conversations', conversationsRouter);
   // router.use('/reviews', reviewsRouter);

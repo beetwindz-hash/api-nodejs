@@ -132,8 +132,8 @@
 
 1. ✅ Complete Auth & Users modules
 2. ✅ Implement Cooks module
-3. ⬜ Implement Dishes module
-4. ⬜ Implement Orders module
+3. ✅ Implement Dishes module
+4. ✅ Implement Orders module
 5. ⬜ Implement remaining modules
 6. ⬜ Add comprehensive tests
 7. ⬜ Add API documentation (Swagger)
