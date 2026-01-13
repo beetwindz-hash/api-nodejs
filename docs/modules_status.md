@@ -131,7 +131,7 @@
 ## 🎯 Next Steps
 
 1. ✅ Complete Auth & Users modules
-2. ⬜ Implement Cooks module
+2. ✅ Implement Cooks module
 3. ⬜ Implement Dishes module
 4. ⬜ Implement Orders module
 5. ⬜ Implement remaining modules
