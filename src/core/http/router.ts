@@ -9,6 +9,8 @@ import { dishesRouter } from "@modules/dishes/presentation/routes/dishes.routes"
 import { ordersRouter } from "@modules/orders/presentation/routes/orders.routes";
 import { conversationsRouter } from "@modules/conversations/presentation/routes/conversations.routes";
 import { reviewsRouter } from "@modules/reviews/presentation/routes/reviews.routes";
+import { notificationsRouter } from "@modules/notifications/presentation/routes/notifications.routes";
+import { adminRouter } from "@modules/admin/presentation/routes/admin.routes";
 
 export const createRouter = (): Router => {
   const router = Router();
@@ -41,11 +43,11 @@ export const createRouter = (): Router => {
   router.use("/orders", ordersRouter);
   router.use("/conversations", conversationsRouter);
   router.use("/reviews", reviewsRouter);
+  router.use("/notifications", notificationsRouter);
+  router.use("/admin", adminRouter);
 
   // TODO: Uncomment as modules are implemented
   // router.use('/applications', applicationsRouter);
-  // router.use('/notifications', notificationsRouter);
-  // router.use('/admin', adminRouter);
 
   return router;
 };
