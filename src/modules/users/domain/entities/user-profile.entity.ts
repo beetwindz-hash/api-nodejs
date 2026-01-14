@@ -56,6 +56,14 @@ export class UserProfileEntity {
     return this.props.preferences;
   }
 
+  get createdAt(): Date {
+    return this.props.createdAt;
+  }
+
+  get updatedAt(): Date {
+    return this.props.updatedAt;
+  }
+
   updateProfile(
     data: Partial<Pick<UserProfileProps, "phone" | "address" | "preferences">>
   ): void {

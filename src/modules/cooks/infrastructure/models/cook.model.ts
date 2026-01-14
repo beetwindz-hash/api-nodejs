@@ -88,7 +88,6 @@ const cookSchema = new Schema<ICookDocument>(
       ref: "User",
       required: true,
       unique: true,
-      index: true,
     },
     bio: {
       type: String,
@@ -225,7 +224,6 @@ const cookSchema = new Schema<ICookDocument>(
 );
 
 // Indexes
-cookSchema.index({ userId: 1 });
 cookSchema.index({ status: 1, isVerified: 1 });
 cookSchema.index({ "location.city": 1, status: 1 });
 cookSchema.index({ cuisines: 1, status: 1 });

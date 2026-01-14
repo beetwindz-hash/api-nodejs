@@ -2,7 +2,6 @@
 // src/modules/notifications/infrastructure/models/notification-preferences.model.ts
 // ============================================================================
 import mongoose, { Schema, Document } from "mongoose";
-import { NotificationType } from "@core/types";
 
 export interface IChannelPreferences {
   order_update: boolean;
@@ -39,7 +38,6 @@ const notificationPreferencesSchema =
         ref: "User",
         required: true,
         unique: true,
-        index: true,
       },
       push: {
         type: channelPreferencesSchema,
@@ -63,7 +61,6 @@ const notificationPreferencesSchema =
     }
   );
 
-notificationPreferencesSchema.index({ userId: 1 }, { unique: true });
 
 export const NotificationPreferencesModel =
   mongoose.model<INotificationPreferencesDocument>(

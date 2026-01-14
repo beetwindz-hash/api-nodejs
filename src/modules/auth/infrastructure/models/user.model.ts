@@ -28,7 +28,6 @@ const userSchema = new Schema<IUserDocument>(
       unique: true,
       lowercase: true,
       trim: true,
-      index: true,
     },
     password: {
       type: String,
@@ -91,7 +90,6 @@ const userSchema = new Schema<IUserDocument>(
   }
 );
 
-userSchema.index({ email: 1 });
 userSchema.index({ role: 1 });
 userSchema.index({ isActive: 1 });
 

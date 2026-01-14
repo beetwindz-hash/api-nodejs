@@ -95,4 +95,8 @@ export class ResponseUtil {
       },
     });
   }
+
+  static noContent(res: Response): Response {
+    return res.status(204).send();
+  }
 }
