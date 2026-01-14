@@ -1,1 +1,4 @@
-// Reviews module
+// ============================================================================
+// src/modules/reviews/index.ts
+// ============================================================================
+// Barrel file for reviews module (kept minimal for now)
