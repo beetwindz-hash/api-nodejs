@@ -1,13 +1,13 @@
 // ============================================================================
-// src/modules/dishes/infrastructure/repositories/dish.repository.impl.ts
+// src/modules/dishes/repositories/dish.repository.impl.ts
 // ============================================================================
 import {
   IDishRepository,
   DishSearchFilters,
 } from "../../domain/repositories/dish.repository";
 import { DishEntity } from "../../domain/entities/dish.entity";
-import { DishModel } from "../models/dish.model";
-import { DishMapper } from "../mappers/dish.mapper";
+import { DishModel } from "../infrastructure/models/dish.model";
+import { DishMapper } from "../infrastructure/mappers/dish.mapper";
 import { QueryOptions } from "@core/types";
 import mongoose from "mongoose";
 

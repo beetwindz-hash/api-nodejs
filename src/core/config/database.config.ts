@@ -1,6 +1,8 @@
 // ============================================================================
 // src/core/config/database.config.ts
 // ============================================================================
+import dotenv from "dotenv";
+dotenv.config();
 export interface DatabaseConfig {
   uri: string;
   testUri: string;
@@ -11,6 +13,14 @@ export interface DatabaseConfig {
     socketTimeoutMS: number;
   };
 }
+
+const getEnvVar = (key: string, defaultValue?: string): string => {
+  const value = process.env[key] || defaultValue;
+  if (!value && !defaultValue) {
+    throw new Error(`Missing required environment variable: ${key}`);
+  }
+  return value!;
+};
 
 export const databaseConfig: DatabaseConfig = {
   uri: getEnvVar("MONGODB_URI"),

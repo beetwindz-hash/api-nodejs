@@ -1,6 +1,8 @@
 // ============================================================================
 // src/core/errors/http.error.ts
 // ============================================================================
+import { AppError } from "./app.error";
+
 export class HttpError extends AppError {
   constructor(message: string, statusCode: number, code?: string) {
     super(message, statusCode, true, code);

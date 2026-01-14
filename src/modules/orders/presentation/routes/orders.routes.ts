@@ -12,7 +12,7 @@ import {
   orderIdValidator,
 } from "../validators/order.validators";
 import { OrderRepositoryImpl } from "../../infrastructure/repositories/order.repository.impl";
-import { DishRepositoryImpl } from "@modules/dishes/infrastructure/repositories/dish.repository.impl";
+import { DishRepositoryImpl } from "@modules/dishes/repositories/dish.repository.impl";
 import { CookRepositoryImpl } from "@modules/cooks/infrastructure/repositories/cook.repository.impl";
 import { AddressRepositoryImpl } from "@modules/users/infrastructure/repositories/address.repository.impl";
 import { UserRepositoryImpl } from "@modules/auth/infrastructure/repositories/user.repository.impl";

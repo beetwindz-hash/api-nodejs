@@ -1,6 +1,8 @@
 // ============================================================================
 // src/modules/users/infrastructure/models/address.model.ts
 // ============================================================================
+import mongoose, { Schema, Document } from "mongoose";
+
 export interface IAddressDocument extends Document {
   userId: mongoose.Types.ObjectId;
   label: string;

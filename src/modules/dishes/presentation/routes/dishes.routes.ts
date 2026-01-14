@@ -15,7 +15,7 @@ import {
   searchDishesValidator,
   dishIdValidator,
 } from "../validators/dish.validators";
-import { DishRepositoryImpl } from "../../infrastructure/repositories/dish.repository.impl";
+import { DishRepositoryImpl } from "../../repositories/dish.repository.impl";
 import { CookRepositoryImpl } from "@modules/cooks/infrastructure/repositories/cook.repository.impl";
 import {
   CreateDishUseCase,
