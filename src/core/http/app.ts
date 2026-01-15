@@ -13,7 +13,6 @@ import {
   requestLogger,
 } from "@core/middlewares";
 import { createRouter } from "./router";
-import { logger } from "@core/utils";
 
 export const createApp = (): Application => {
   const app = express();
