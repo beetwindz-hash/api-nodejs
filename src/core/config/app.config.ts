@@ -49,8 +49,8 @@ export const appConfig: AppConfig = {
   corsOrigin: parseCorsOrigins(
     getEnvVar(
       "CORS_ORIGIN",
-      "http://localhost:5173,http://localhost:3000,http://localhost:8080"
-    )
+      "http://localhost:5173,http://localhost:3000,http://localhost:8080,http://localhost:5000",
+    ),
   ),
   uploadPath: getEnvVar("UPLOAD_PATH", "./uploads"),
   maxFileSize: getEnvNumber("MAX_FILE_SIZE", 5242880),
